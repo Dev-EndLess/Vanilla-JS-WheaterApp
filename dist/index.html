@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.min.css">
+    <title>Responsive-JS-WheaterApp</title>
+    <script type="module" src="/main.js" defer></script>
+  </head>
+  <body>
+    <main class="">
+      <h1 class="offscreen">Responsive Weather App Powered by the Open Weather A P I </h1>
+
+      <!-- Search Bar -->
+      <section id="searchBar" class="searchBar">
+        <form id="searchBar--form" class="searchBar--form" role="search">
+          <label for="searchBar--text" class="offscreen">Enter a New Location</label>
+          <input id="searchBar--text" class="searchBar--text" type="text" role="searchbox" size="30" autocomplete="off" placeholder="City, State, Country">
+          <button id="searchBar--button" class="searchBar--button" title="Submit Location" aria-label="">
+            <i class="fa fa-search"></i>
+            <i class="fas fa-spinner fa-pulse"></i>
+          </button>
+        </form>
+      </section>
+
+      <a href="#currentForecast" class="skip-link">Skip to Current Conditions</a>
+      <!-- Current Forecast  -->
+      <section id="currentForecast" class="currentForecast fade-in" role="region" aria-labelledby="currentForecast--location">
+        <h2 id="currentForecast--location" class="currentForecast--location">Current Conditions</h2>
+        <div id="currentForecast--conditions" class="currentForecast--conditions"></div>
+      </section>
+
+      <a href="#dailyForecast" class="skip-link">Skip to Six Day Forecast</a>
+      <!-- Daily Forecast Icons-->
+      <nav>
+        <button id="getLocation" class="button" title="getLocation" aria-label="Get the current weather conditions for your current location">
+          <i class="fas fa-map-marker-alt"></i>
+          <i class="fas fa-spinner fa-pulse"></i>
+        </button>
+        <button id="home" class="button" title="home" aria-label="Get the current weather conditions for your home location">
+          <i class="fa-sharp fa-solid fa-house-chimney"></i>
+          <i class="fas fa-spinner fa-pulse"></i>
+        </button>
+        <button id="saveLocation" class="button" title="saveLocation" aria-label="Save the current location as your home location">
+          <i class="fa thin fa-floppy-disk"></i>
+          <i class="fas fa-spinner fa-pulse"></i>
+        </button>
+        <button id="unit" class="button" title="Toggle Measurement Units" aria-label="Toggle between metric and imperial measurement units">
+          <i class="fa thin fa-chart-pie"></i>
+          <i class="fas fa-spinner fa-pulse"></i>
+        </button>
+        <button id="refresh" class="button" title="Refresh Weather" aria-label="Refresh the current weather conditions">
+          <i class="fa-sharp fa-solid fa-arrows-rotate"></i>
+          <i class="fas fa-spinner fa-pulse"></i>
+        </button>
+      </nav>
+      <hr class="fade-in">
+
+      <!-- Daily Forecast -->
+      <section id="dailyForecast" class="dailyForecast fade-in" role="region" aria-labelledby="dailyForecast--title">
+        <h2 id="dailyForecast--title" class="dailyForecast--title"></h2>
+        <div id="dailyForecast--contents" class="dailyForecast--contents"></div>
+      </section>
+      <p id="confermation" class="offscreen" aria-live="assertive"></p>
+    </main>
+  </body>
+</html>
