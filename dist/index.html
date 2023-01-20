@@ -21,7 +21,7 @@
           <input id="searchBar--text" class="searchBar--text" type="text" role="searchbox" size="30" autocomplete="off" placeholder="City, State, Country">
           <button id="searchBar--button" class="searchBar--button" title="Submit Location" aria-label="">
             <i class="fa fa-search"></i>
-            <i class="fas fa-spinner fa-pulse"></i>
+            <i class="fas fa-spinner fa-pulse none"></i>
           </button>
         </form>
       </section>
@@ -38,30 +38,30 @@
       <nav>
         <button id="getLocation" class="button" title="getLocation" aria-label="Get the current weather conditions for your current location">
           <i class="fas fa-map-marker-alt"></i>
-          <i class="fas fa-spinner fa-pulse"></i>
+          <i class="fas fa-spinner fa-pulse none"></i>
         </button>
         <button id="home" class="button" title="home" aria-label="Get the current weather conditions for your home location">
           <i class="fa-sharp fa-solid fa-house-chimney"></i>
-          <i class="fas fa-spinner fa-pulse"></i>
+          <i class="fas fa-spinner fa-pulse none"></i>
         </button>
         <button id="saveLocation" class="button" title="saveLocation" aria-label="Save the current location as your home location">
           <i class="fa thin fa-floppy-disk"></i>
-          <i class="fas fa-spinner fa-pulse"></i>
+          <i class="fas fa-spinner fa-pulse none"></i>
         </button>
         <button id="unit" class="button" title="Toggle Measurement Units" aria-label="Toggle between metric and imperial measurement units">
           <i class="fa thin fa-chart-pie"></i>
-          <i class="fas fa-spinner fa-pulse"></i>
+          <i class="fas fa-spinner fa-pulse none"></i>
         </button>
         <button id="refresh" class="button" title="Refresh Weather" aria-label="Refresh the current weather conditions">
           <i class="fa-sharp fa-solid fa-arrows-rotate"></i>
-          <i class="fas fa-spinner fa-pulse"></i>
+          <i class="fas fa-spinner fa-pulse none"></i>
         </button>
       </nav>
       <hr class="fade-in">
 
       <!-- Daily Forecast -->
       <section id="dailyForecast" class="dailyForecast fade-in" role="region" aria-labelledby="dailyForecast--title">
-        <h2 id="dailyForecast--title" class="dailyForecast--title"></h2>
+        <h2 id="dailyForecast--title" class="dailyForecast--title">Six Day Forecast</h2>
         <div id="dailyForecast--contents" class="dailyForecast--contents"></div>
       </section>
       <p id="confermation" class="offscreen" aria-live="assertive"></p>
