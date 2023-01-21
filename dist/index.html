@@ -11,15 +11,15 @@
     <script type="module" src="/main.js" defer></script>
   </head>
   <body>
-    <main class="">
+    <main class="fade-in">
       <h1 class="offscreen">Responsive Weather App Powered by the Open Weather A P I </h1>
 
       <!-- Search Bar -->
-      <section id="searchBar" class="searchBar">
+      <section id="searchBar" class="searchBar fade-in">
         <form id="searchBar--form" class="searchBar--form" role="search">
-          <label for="searchBar--text" class="offscreen">Enter a New Location</label>
+          <label for="searchBar--text" class="offscreen ">Enter a New Location</label>
           <input id="searchBar--text" class="searchBar--text" type="text" role="searchbox" size="30" autocomplete="off" placeholder="City, State, Country">
-          <button id="searchBar--button" class="searchBar--button" title="Submit Location" aria-label="">
+          <button id="searchBar--button" class="searchBar--button button" title="Submit Location" aria-label="">
             <i class="fa fa-search"></i>
             <i class="fas fa-spinner fa-pulse none"></i>
           </button>
@@ -30,12 +30,22 @@
       <!-- Current Forecast  -->
       <section id="currentForecast" class="currentForecast fade-in" role="region" aria-labelledby="currentForecast--location">
         <h2 id="currentForecast--location" class="currentForecast--location">Current Conditions</h2>
-        <div id="currentForecast--conditions" class="currentForecast--conditions"></div>
+        <div id="currentForecast--conditions" class="currentForecast--conditions">
+          <!-- Content Dynamic Generated -->
+          <div id="icon" class="icon"><i class="fa-solid fa-cog fa-spin" aria-hidden="true" title="clear sky"></i></div>
+          <div class="temp">59°<div class="unit">F</div></div>
+          <div class="desc">Clear Sky</div>
+          <div class="feels">Feels Like 24°</div>
+          <div class="maxtemp">High 32°</div>
+          <div class="mintemp">Low 19°</div>
+          <div class="humidity">Humidity</div>
+          <div class="wind">Wind 7 mph</div>
+        </div>
       </section>
 
       <a href="#dailyForecast" class="skip-link">Skip to Six Day Forecast</a>
-      <!-- Daily Forecast Icons-->
-      <nav>
+      <!-- Six Day Forecast Icons-->
+      <nav id="navButtons" class="navButtons fade-in">
         <button id="getLocation" class="button" title="getLocation" aria-label="Get the current weather conditions for your current location">
           <i class="fas fa-map-marker-alt"></i>
           <i class="fas fa-spinner fa-pulse none"></i>
@@ -57,12 +67,38 @@
           <i class="fas fa-spinner fa-pulse none"></i>
         </button>
       </nav>
-      <hr class="fade-in">
+      <hr fade-in>
 
       <!-- Daily Forecast -->
       <section id="dailyForecast" class="dailyForecast fade-in" role="region" aria-labelledby="dailyForecast--title">
-        <h2 id="dailyForecast--title" class="dailyForecast--title">Six Day Forecast</h2>
-        <div id="dailyForecast--contents" class="dailyForecast--contents"></div>
+        <h2 id="dailyForecast--title" class="dailyForecast--title offscreen">Six Day Forecast</h2>
+        <div id="dailyForecast--contents" class="dailyForecast--contents">
+          <!-- Content Dynamic Generated -->
+          <div class="forecastDay"><p class="dayAbbreviation">SUN</p><img src="./animated-icons/rainy-1.svg" alt="">
+            <p class="dayHigh">32°</p>
+            <p class="dayLow">27°</p>
+          </div>
+          <div class="forecastDay"><p class="dayAbbreviation">MON</p><img src="./animated-icons/cloudy-day-2.svg" alt="">
+            <p class="dayHigh">35°</p>
+            <p class="dayLow">31°</p>
+          </div>
+          <div class="forecastDay"><p class="dayAbbreviation">TUE</p><img src="./animated-icons/cloudy-day-3.svg" alt="">
+            <p class="dayHigh">31°</p>
+            <p class="dayLow">23°</p>
+          </div>
+          <div class="forecastDay"><p class="dayAbbreviation">WES</p><img src="./animated-icons/day.svg" alt="">
+            <p class="dayHigh">33°</p>
+            <p class="dayLow">24°</p>
+          </div>
+          <div class="forecastDay"><p class="dayAbbreviation">THU</p><img src="./animated-icons/cloudy-day-2.svg" alt="">
+            <p class="dayHigh">32°</p>
+            <p class="dayLow">27°</p>
+          </div>
+          <div class="forecastDay"><p class="dayAbbreviation">FRI</p><img src="./animated-icons/rainy-3.svg" alt="">
+            <p class="dayHigh">37°</p>
+            <p class="dayLow">32°</p>
+          </div>
+        </div>
       </section>
       <p id="confermation" class="offscreen" aria-live="assertive"></p>
     </main>
