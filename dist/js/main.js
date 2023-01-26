@@ -1,5 +1,5 @@
-import { setLocationObject, getHomeLocation, cleanText } from "./dataFunctions.js"
-import { addSpinner, displayError, displayApiError, updateScreenReaderConfirmation } from "./domFunctions.js"
+import { setLocationObject, getHomeLocation, getWeatherFromCoords, getCoordsFromApi, cleanText } from "./dataFunctions.js"
+import { setPlaceHolderText, addSpinner, displayError, displayApiError, updateScreenReaderConfirmation  } from "./domFunctions.js"
 import CurrentLocation from "./CurrentLocation.js"
 
 const currentLoc = new CurrentLocation()
@@ -19,7 +19,7 @@ const initApp = () => {
   const locationEntry = document.getElementById("searchBar--form")
   locationEntry.addEventListener("submit", submitNewLocation)
   // Setup
-
+  setPlaceHolderText()
   // Load Weather
   loadWeather()
 }
@@ -113,25 +113,32 @@ const refreshWeather = () => {
 
 const submitNewLocation = async (event) => {
   event.preventDefault()
-  const text = document.getElementById("searchBar--form").value
+  const text = document.getElementById("searchBar--text").value
   const entryText = cleanText(text)
   if (!entryText.length) return
   const locationIcon = document.querySelector(".fa-search")
   addSpinner(locationIcon)
   const coordsData = await getCoordsFromApi(entryText, currentLoc.getUnit())
-  if (coordsData.cod === 200) {
-    // Work with Api data
-    // success
-    const myCoordsObj = {}
-    setLocationObject(currentLoc, myCoordsObj)
-    updateDataAndDisplay(currentLoc)
+  if (coordsData) {
+    if (coordsData.cod === 200) {
+      const myCoordsObj = {
+        lat: coordsData.coord.lat,
+        lon: coordsData.coord.lon,
+        name: coordsData.sys.country 
+        ? `${coordsData.name}, ${coordsData.sys.country}}` 
+        : coordsData
+      }
+      setLocationObject(currentLoc, myCoordsObj)
+      updateDataAndDisplay(currentLoc)
+    } else {
+      displayApiError(coordsData)
+    }
   } else {
-    displayApiError(coordsData)
+    displayError("Connection Error", "Connection Error")
   }
 }
 
 const updateDataAndDisplay = async (locationObj) => {
-  console.log(locationObj)
-  // const weatherJson = await getWeatherFromCoords(locationObj)
+  const weatherJson = await getWeatherFromCoords(locationObj)
   // if (weatherJson) updateDisplay(weatherJson, locationObj)
 }
