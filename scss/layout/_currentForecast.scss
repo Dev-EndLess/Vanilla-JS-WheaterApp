@@ -19,18 +19,18 @@
       font-size: 1.3rem;
     }
     @include mediaQuery(400px) {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
     }
 
     .temp {
       @include flexCenter;
       grid-row: 1 / span 3;
       grid-column: 1 / span 2;
-      font-size: 6rem;
+      font-size: 5rem;
       letter-spacing: 0;
       text-shadow: 1px 0 5px $text-shadow-color;
       position: relative;
-      @include mediaQuery(360px) {
+      @include mediaQuery(400px) {
         font-size: 8rem;
       }
       @include mediaQuery(768px) {
