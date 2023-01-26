@@ -82,3 +82,41 @@ const deleteContents = (parentElement) => {
   }
 }
 
+const getWeatherClass = (icon) => {
+  const firstTwoChars = icon.slice(0, 2)
+  const lastChar = icon.slice(2)
+  const weatherLookup = {
+    09: "soft rain",
+    10: "heavy rain",
+    11: "thunder storm",
+    13: "snow",
+    50: "fog"
+  }
+  let weatherClass
+  if (weatherLookup[firstTwoChars]) {
+    weatherClass = weatherLookup[firstTwoChars]
+  } else if (lastChar === "d") {
+    weatherClass = "clouds"
+  } else {
+    weatherClass = "night"
+  }
+  return weatherClass
+}
+
+const setBGImage = (weatherClass) => {
+  document.documentElement.classList.add(weatherClass)
+  document.documentElement.classList.forEach(img => {
+    if (img !== weatherClass) document.documentElement.classList.remove(img)
+  })
+}
+
+const buildScreenReaderWeather = (weatherJson, locationObj) => {
+  const location = locationObj.getName()
+  const unit = locationObj.getUnit()
+  const tempUnit = unit === "metric" ? "Celsius" : "Fahrenheit"
+  return `${weatherJson.current.weather[0].description} and ${Math.round(Number(weatherJson.current.temp))}° in ${location}`
+}
+
+const setFocusOnSearch = () => {
+  document.getElementById("searchBar--text").focus()
+}
