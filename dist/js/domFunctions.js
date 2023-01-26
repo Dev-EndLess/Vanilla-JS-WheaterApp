@@ -43,3 +43,42 @@ const updateWeatherLocationHeader = (message) => {
 export const updateScreenReaderConfirmation = (message) => {
   document.getElementById("confirmation").textContent = message
 }
+
+export const updateDisplay = (weatherJson, locationObj) => {
+  fadeDisplay()
+  clearDisplay()
+  const weatherClass = getWeatherClass(weatherJson.current.weather[0].icon)
+  setBGImage(weatherClass)
+  const screenReaderWeather = buildScreenReaderWeather(weatherJson, locationObj)
+  updateScreenReaderConfirmation(screenReaderWeather)
+  updateWeatherLocationHeader(locationObj.getName())
+  // current conditions
+  // six day forecast
+  setFocusOnSearch()
+  fadeDisplay()
+}
+
+const fadeDisplay = () => {
+  const currentCondition = document.getElementById("currentForecast")
+  currentCondition.classList.toggle("zero-vis")
+  currentCondition.classList.toggle("fade-in")
+  const sixDayForecast = document.getElementById("dailyForecast")
+  sixDayForecast.classList.toggle("zero-vis")
+  sixDayForecast.classList.toggle("fade-in")
+}
+
+const clearDisplay = () => {
+  const currentCondition = document.getElementById("currentForecast--conditions")
+  deleteContents(currentCondition)
+  const sixDayForecast = document.getElementById("dailyForecast--contents")
+  deleteContents(sixDayForecast)
+}
+
+const deleteContents = (parentElement) => {
+  let child = parentElement.lastElementChild
+  while (child) {
+    parentElement.removeChild(child)
+    child = parentElement.lastElementChild
+  }
+}
+
