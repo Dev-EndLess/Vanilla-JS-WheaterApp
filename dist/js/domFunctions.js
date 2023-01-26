@@ -1,8 +1,8 @@
 export const setPlaceHolderText = () => {
   const input = document.getElementById("searchBar--text")
-  window.innerWidth < 400 
-  ? (input.placeholder = "City, State, Country")
-  : (input.placeholder = "City, State, Country, or Zip Code")
+  window.innerWidth < 400
+    ? (input.placeholder = "City, State, Country")
+    : (input.placeholder = "City, State, Country, or Zip Code")
 }
 
 export const addSpinner = (element) => {
@@ -53,6 +53,7 @@ export const updateDisplay = (weatherJson, locationObj) => {
   updateScreenReaderConfirmation(screenReaderWeather)
   updateWeatherLocationHeader(locationObj.getName())
   // current conditions
+  const currentConditionArray = createCurrentDonditionsDivs(weatherJson, locationObj.getUnit())
   // six day forecast
   setFocusOnSearch()
   fadeDisplay()
@@ -119,4 +120,40 @@ const buildScreenReaderWeather = (weatherJson, locationObj) => {
 
 const setFocusOnSearch = () => {
   document.getElementById("searchBar--text").focus()
+}
+
+const createCurrentDonditionsDivs = (weatherObj, unit) => {
+  const tempUnit = unit === "metric" ? "Celsius" : "Fahrenheit"
+  const windUnit = unit === "metric" ? "Mph" : "m/s"
+  const icon = createMainImgDiv(
+    weatherObj.current.weather[0].icon, 
+    weatherObj.current.weather[0].description
+  )
+
+  
+}
+
+const createMainImgDiv = (icon, altText) => {
+  const iconDiv = createElement("div", "icon")
+  iconDiv.id = "icon"
+  const fontAwesomeIcon = translateIconToFontAwesome(icon)
+  fontAwesomeIcon.ariaHidden = true
+  fontAwesomeIcon.title = altText
+  iconDiv.appendChild(fontAwesomeIcon)
+  return iconDiv
+}
+
+const createElement = (elementType, divClassName, divText, unit) => {
+  const div = document.createElement(elementType)
+  div.classList.add(divClassName)
+  if (divText) {
+    div.textContent = divText
+  }
+  if (divClassName === "temp") {
+    const unitDiv = document.createElement("div")
+    unitDiv.classList.add("unit")
+    unitDiv.textContent = unit
+    div.appendChild(unitDiv)
+  }
+  return div
 }
