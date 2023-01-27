@@ -53,7 +53,8 @@ export const updateDisplay = (weatherJson, locationObj) => {
   updateScreenReaderConfirmation(screenReaderWeather)
   updateWeatherLocationHeader(locationObj.getName())
   // current conditions
-  const currentConditionArray = createCurrentDonditionsDivs(weatherJson, locationObj.getUnit())
+  const currentConditionArray = createCurrentConditionsDivs(weatherJson, locationObj.getUnit())
+  displayCurrentConditions(currentConditionArray)
   // six day forecast
   setFocusOnSearch()
   fadeDisplay()
@@ -87,11 +88,11 @@ const getWeatherClass = (icon) => {
   const firstTwoChars = icon.slice(0, 2)
   const lastChar = icon.slice(2)
   const weatherLookup = {
-    09: "soft rain",
-    10: "heavy rain",
-    11: "thunder storm",
-    13: "snow",
-    50: "fog"
+    "09": "soft rain",
+    "10": "heavy rain",
+    "11": "thunder storm",
+    "13": "snow",
+    "50": "fog"
   }
   let weatherClass
   if (weatherLookup[firstTwoChars]) {
@@ -115,22 +116,29 @@ const buildScreenReaderWeather = (weatherJson, locationObj) => {
   const location = locationObj.getName()
   const unit = locationObj.getUnit()
   const tempUnit = unit === "metric" ? "Celsius" : "Fahrenheit"
-  return `${weatherJson.current.weather[0].description} and ${Math.round(Number(weatherJson.current.temp))}° in ${location}`
+  return `${weatherJson.current.weather[0].description} and ${Math.round(Number(weatherJson.current.temp))}°${tempUnit} in ${location}`
 }
 
 const setFocusOnSearch = () => {
   document.getElementById("searchBar--text").focus()
 }
 
-const createCurrentDonditionsDivs = (weatherObj, unit) => {
+const createCurrentConditionsDivs = (weatherObj, unit) => {
   const tempUnit = unit === "metric" ? "Celsius" : "Fahrenheit"
   const windUnit = unit === "metric" ? "Mph" : "m/s"
   const icon = createMainImgDiv(
-    weatherObj.current.weather[0].icon, 
+    weatherObj.current.weather[0].icon,
     weatherObj.current.weather[0].description
   )
-
-  
+  const temp = createElement("div", "temp", `${Math.round(Number(weatherObj.current.temp))}°`, tempUnit)
+  const properDescription = toProperCase(weatherObj.current.weather[0].description)
+  const description = createElement("div", "desc", properDescription)
+  const feels = createElement("div", "feels", `Feels Like ${Math.round(Number(weatherObj.current.feels_like))}°`)
+  const maxTemp = createElement("div", "maxTemp", `High ${Math.round(Number(weatherObj.daily[0].temp.max))}°`)
+  const minTemp = createElement("div", "minTemp", `Low ${Math.round(Number(weatherObj.daily[0].temp.min))}°`)
+  const humidity = createElement("div", "humidity", `Humidity ${Math.round(Number(weatherObj.current.humidity))}%`)
+  const wind = createElement("div", "wind", `Wind ${Math.round(Number(weatherObj.current.wind_speed))} ${windUnit}`)
+  return [icon, temp, description, feels, maxTemp, minTemp, humidity, wind]
 }
 
 const createMainImgDiv = (icon, altText) => {
@@ -156,4 +164,61 @@ const createElement = (elementType, divClassName, divText, unit) => {
     div.appendChild(unitDiv)
   }
   return div
+}
+
+const translateIconToFontAwesome = (icon) => {
+  const i = document.createElement("i")
+  const firstTwoChars = icon.slice(0, 2)
+  const lastChar = icon.slice(2)
+  switch (firstTwoChars) {
+    case "01":
+      if (lastChar === "d") {
+        i.classList.add("far", "fa-sun")
+      } else {
+        i.classList.add("far", "fa-moon")
+      }
+      break;
+    case "02":
+      if (lastChar === "d") {
+        i.classList.add("fas", "fa-cloud-sun")
+      } else {
+        i.classList.add("fas", "fa-cloud-moon")
+      }
+      break;
+    case "03":
+      i.classList.add("fas", "fa-cloud")
+      break;
+    case "04":
+      i.classList.add("fas", "fa-cloud-meatball")
+      break;
+    case "09":
+      i.classList.add("fas", "fa-cloud-rain")
+      break;
+    case "10":
+      if (lastChar === "d") {
+        i.classList.add("fas", "fa-cloud-sun-rain")
+      } else {
+        i.classList.add("fas", "fa-cloud-moon-rain")
+      }
+      break;
+    case "11":
+      i.classList.add("fas", "fa-poo-storm")
+      break;
+    case "13":
+      i.classList.add("far", "fa-snowflake")
+      break;
+    case "50":
+      i.classList.add("fas", "fa-smog")
+      break;
+    default:
+      i.classList.add("far", "fa-question-circle")
+  }
+  return i
+}
+
+const displayCurrentConditions = (currentConditionArray) => {
+  const currentConditionContainer = document.getElementById("currentForecast--conditions")
+  currentConditionArray.forEach((currentCondition) => {
+    currentConditionContainer.appendChild(currentCondition)
+  })
 }
