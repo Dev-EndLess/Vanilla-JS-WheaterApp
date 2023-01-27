@@ -1,5 +1,5 @@
 import { setLocationObject, getHomeLocation, getWeatherFromCoords, getCoordsFromApi, cleanText } from "./dataFunctions.js"
-import { setPlaceHolderText, addSpinner, displayError, displayApiError, updateScreenReaderConfirmation  } from "./domFunctions.js"
+import { setPlaceHolderText, addSpinner, displayError, displayApiError, updateScreenReaderConfirmation, updateDisplay  } from "./domFunctions.js"
 import CurrentLocation from "./CurrentLocation.js"
 
 const currentLoc = new CurrentLocation()
@@ -26,12 +26,15 @@ const initApp = () => {
 
 document.addEventListener("DOMContentLoaded", initApp)
 
+
 const getGeoWeather = (event) => {
   if (event && event.type === "click") {
     const mapIcon = document.querySelector(".fa-map-marker-alt")
     addSpinner(mapIcon)
   }
   if (!navigator.geolocation) geoError()
+  // method build in the browser 
+  // console.log(window.navigator.geolocation)
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError)
 }
 
@@ -125,7 +128,7 @@ const submitNewLocation = async (event) => {
         lat: coordsData.coord.lat,
         lon: coordsData.coord.lon,
         name: coordsData.sys.country 
-        ? `${coordsData.name}, ${coordsData.sys.country}}` 
+        ? `${coordsData.name}, ${coordsData.sys.country}` 
         : coordsData
       }
       setLocationObject(currentLoc, myCoordsObj)
@@ -140,5 +143,5 @@ const submitNewLocation = async (event) => {
 
 const updateDataAndDisplay = async (locationObj) => {
   const weatherJson = await getWeatherFromCoords(locationObj)
-  // if (weatherJson) updateDisplay(weatherJson, locationObj)
+  if (weatherJson) updateDisplay(weatherJson, locationObj)
 }
