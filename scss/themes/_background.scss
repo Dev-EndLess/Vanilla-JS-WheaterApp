@@ -1,24 +1,47 @@
-.rain {
+.broken-clouds {
   background-color: $background-color;
-  background-image: url("https://usagif.com/wp-content/uploads/rainy-10.gif.webp");
+  background-image: url("../background-gif/broken-clouds.gif");
 }
 
-.snow {
+.clear-sky {
   background-color: $background-color;
-  background-image: url("https://i.pinimg.com/originals/0c/af/ba/0cafbabdf7bb68532655c09212e953d5.gif");
+  background-image: url("../background-gif/clear-sky.gif");
 }
 
-.night {
+.few-clouds {
   background-color: $background-color;
-  background-image: url("https://phoneky.co.uk/thumbs/screensavers/down/nature/moon_il5ac6bm.gif");
+  background-image: url("../background-gif/few-clouds.gif");
+}
+
+.heavy-rain {
+  background-color: $background-color;
+  background-image: url("../background-gif/heavy-rain.gif");
+}
+
+.light-rain {
+  background-color: $background-color;
+  background-image: url("../background-gif/light-rain.gif");
+}
+
+.thunder-storm {
+  background-color: $background-color;
+  background-image: url("../background-gif/thunder-storm.gif");
 }
 
 .fog {
   background-color: $background-color;
-  background-image: url("https://i.makeagif.com/media/10-16-2018/rjxI8k.gif");
+  background-image: url("../background-gif/fog.gif");
 }
 
-.clouds {
+.snow {
   background-color: $background-color;
-  background-image: url("https://i.gifer.com/YMnx.gif");
+  background-image: url("../background-gif/snow.gif");
 }
+
+.night {
+  background-color: $background-color;
+  background-image: url("../background-gif/night.gif");
+}
+
+
+
