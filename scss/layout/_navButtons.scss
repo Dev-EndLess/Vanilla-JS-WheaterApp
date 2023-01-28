@@ -3,5 +3,7 @@
   @include flexCenter;
   justify-content: space-evenly;
   padding: 0.5rem 0.25rem;
-  margin-bottom: 1rem;
+  @include mediaQuery(768px) {
+    padding: 1.5rem;
+  }
 }
