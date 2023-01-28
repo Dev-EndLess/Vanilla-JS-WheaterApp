@@ -27,10 +27,13 @@
         font-size: 1rem;
       }
 
-      .img {
+      .icon {
         width: 3rem;
         @include mediaQuery(400px) {
           width: 4rem;
+        }
+        @include mediaQuery(768px) {
+          width: 2rem;
         }
       }
     }
