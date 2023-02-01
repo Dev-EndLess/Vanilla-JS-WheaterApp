@@ -1,4 +1,3 @@
-
 export const setLocationObject = (locationObj, coordsObj) => {
   const { lat, lon, name, unit } = coordsObj
   locationObj.setLat(lat)
@@ -39,7 +38,7 @@ export const getWeatherFromCoords = async (locationObj) => {
     const weatherJson = await weatherStream.json()
     return weatherJson
   } catch(err) {
-    console.error(err.stack)
+    console.error(err)
   }
 } 
 
@@ -70,7 +69,7 @@ export const getCoordsFromApi = async (entryText, units) => {
     const jsonData = await dataStream.json()
     return jsonData
   } catch(err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
