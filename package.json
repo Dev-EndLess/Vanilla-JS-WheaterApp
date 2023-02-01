@@ -4,11 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "vite": "^4.0.0"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dev-EndLess/Responsive-JS-WheaterApp.git"
+  },
+  "keywords": [],
+  "author": "Dave Gray feat. EndLess",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dev-EndLess/Responsive-JS-WheaterApp/issues"
+  },
+  "homepage": "https://github.com/Dev-EndLess/Responsive-JS-WheaterApp#readme",
+  "description": "",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
   }
 }
