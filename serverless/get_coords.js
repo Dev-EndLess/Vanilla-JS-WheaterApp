@@ -8,9 +8,9 @@ exports.handler = async (event, context) => {
   const regex = /^\d+$/g
   const flag = regex.test(text) ? "zip" : "q"
   const url = `http://api.openweathermap.org/data/2.5/weather?${flag}=${text}&units=${units}&appid=${WEATHER_API_KEY}`
-  const encodedURL = encodeURI(url)
+  const encodedUrl = encodeURI(url)
   try{
-    const dataStream = await fetch(encodedURL)
+    const dataStream = await fetch(encodedUrl)
     const jsonData = await dataStream.json()
     return {
       statusCode: 200,
