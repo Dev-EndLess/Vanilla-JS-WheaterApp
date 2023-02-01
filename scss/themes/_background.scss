@@ -1,11 +1,16 @@
-.broken-clouds {
+.night {
   background-color: $background-color;
-  background-image: url("../background-gif/broken-clouds.gif");
+  background-image: url("../background-gif/night.gif");
 }
 
 .clear-sky {
   background-color: $background-color;
   background-image: url("../background-gif/clear-sky.gif");
+}
+
+.broken-clouds {
+  background-color: $background-color;
+  background-image: url("../background-gif/broken-clouds.gif");
 }
 
 .few-clouds {
@@ -38,10 +43,6 @@
   background-image: url("../background-gif/snow.gif");
 }
 
-.night {
-  background-color: $background-color;
-  background-image: url("../background-gif/night.gif");
-}
 
 
 
