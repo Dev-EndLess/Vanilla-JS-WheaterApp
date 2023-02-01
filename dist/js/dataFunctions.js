@@ -1,4 +1,3 @@
-const WEATHER_API_KEY = "69ce72a2148d9abdca67a39afb44af7e"
 
 export const setLocationObject = (locationObj, coordsObj) => {
   const { lat, lon, name, unit } = coordsObj
