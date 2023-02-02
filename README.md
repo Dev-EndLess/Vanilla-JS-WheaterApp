@@ -1,4 +1,4 @@
-# Custom Weather-App with Vanilla Javascript by DaveGray
+# Custom Weather-App with Vanilla JS by DaveGray
 
 Command to Start local development : 
 
