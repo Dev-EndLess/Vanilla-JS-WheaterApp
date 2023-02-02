@@ -1,6 +1,7 @@
 # Custom Weather-App with Vanilla JS by DaveGray
 
-## netlify dev - Start local development
+- Start local development
+## netlify dev
 
 ### Tutorial on Youtube
 
