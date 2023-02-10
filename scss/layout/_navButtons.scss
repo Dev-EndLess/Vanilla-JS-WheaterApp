@@ -4,6 +4,6 @@
   justify-content: space-evenly;
   padding: 0.5rem 0.25rem;
   @include mediaQuery(768px) {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 }

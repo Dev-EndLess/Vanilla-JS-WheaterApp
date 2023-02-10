@@ -22,6 +22,9 @@
     @include mediaQuery(400px) {
       font-size: 1.7rem;
     }
+    @include mediaQuery(768px) {
+      font-size: 1.4rem;
+    }
 
     .temp {
       @include flexCenter;
@@ -55,7 +58,7 @@
       width: 8rem;
       @include flexCenter;
       grid-row: 1 / span 1;
-      grid-column: 4 / span 2;
+      grid-column: 5 / span 2;
       @include mediaQuery(400px) {
         grid-row: 1 / span 1;
         grid-column: 6 / span 1;
