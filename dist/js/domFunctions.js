@@ -221,7 +221,7 @@ const translateIconToMyIcon = (icon) => {
       }
       break;
     case "11":
-      img.src = `./animated-icons/thunderstorms-extreme.svg`
+      img.src = `./animated-icons/thunderstorms-extreme-rain.svg`
       break;
     case "13":
       img.src = `./animated-icons/overcast-snow.svg`
