@@ -2,14 +2,14 @@
 
 ### Link to the Project Tutorial: 
 
-[![Y|Youtube](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/100px-YouTube_Logo_2017.svg.png)](https://www.youtube.com/watch?v=s_Ie_yh_4Co)
+[![Y|Youtube](https://i.postimg.cc/0QJJvG0Z/depositphotos-66757783-stock-photo-youtube-logotype-printed-on-paper.webp)](https://www.youtube.com/watch?v=s_Ie_yh_4Co)
 
 ## Development
 
 Want to contribute? Great!
 Open your favorite Terminal and run these commands.
 
-[![N|Netlify](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Netlify_logo.svg/100px-Netlify_logo.svg.png)](https://www.netlify.com/)
+[![N|Netlify](https://i.postimg.cc/wj5JyBhQ/full-logo-dark-1.png)](https://www.netlify.com/)
 
 Step 1: Install Netlify CLI
 
